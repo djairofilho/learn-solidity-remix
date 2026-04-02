@@ -143,5 +143,3 @@ contract ExemploVisibilidade {
     }
 }
 ```
-
-Se quiser, o proximo passo e criar uma versao com exercicios praticos (nivel iniciante, intermediario e desafio) para voce usar em aula.
