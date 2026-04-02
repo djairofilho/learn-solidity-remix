@@ -30,6 +30,10 @@ Antes dos exemplos praticos, siga esta ordem:
 ## 🎯 O que cada um ensina
 
 ### 🧮 1. Contador (Ultra Básico)
+
+**Problema:** Como guardar um número que persista na blockchain e seja acessível a todos?
+
+**Conceitos:**
 - Variável de estado (`uint256`)
 - Leitura automática (`public`)
 - Alteração de estado simples
@@ -40,6 +44,10 @@ Antes dos exemplos praticos, siga esta ordem:
 ---
 
 ### 🗳️ 2. Votação 
+
+**Problema:** Como registrar votos de forma justa, impedindo que alguém vote duas vezes?
+
+**Conceitos:**
 - `mapping` (dicionário blockchain)
 - Lógica de negócio (`require`)
 - Controle simples de acesso
@@ -50,6 +58,10 @@ Antes dos exemplos praticos, siga esta ordem:
 ---
 
 ### 💰 3. Cofrinho (Depositar/Retirar ETH)
+
+**Problema:** Como gerenciar diferentes saldos de usuários e permitir depósitos/saques?
+
+**Conceitos:**
 - Função `payable`
 - `msg.value` (ETH recebido)
 - `msg.sender` (quem chamou)
@@ -61,6 +73,10 @@ Antes dos exemplos praticos, siga esta ordem:
 ---
 
 ### 🔐 4. Admin (Controle de Dono)
+
+**Problema:** Como garantir que apenas o proprietário do contrato possa executar ações críticas?
+
+**Conceitos:**
 - `msg.sender` (identidade)
 - `constructor()` (inicialização)
 - `modifier` (reutilizável)
@@ -71,6 +87,10 @@ Antes dos exemplos praticos, siga esta ordem:
 ---
 
 ### 🎁 5. Faucet (Distribuidor)
+
+**Problema:** Como distribuir recursos periodicamente, impedindo que alguém saque múltiplas vezes em poucos minutos?
+
+**Conceitos:**
 - `block.timestamp` (tempo do blockchain)
 - Controle de taxa (rate limiting)
 - Integração com tokens
@@ -81,6 +101,10 @@ Antes dos exemplos praticos, siga esta ordem:
 ---
 
 ### 🎲 6. Cara ou Coroa
+
+**Problema:** Como criar um sorteio/jogo em um ambiente determinístico como a blockchain?
+
+**Conceitos:**
 - Pseudo-random com `keccak256()`
 - Hash de dados
 - Limitações da blockchain (determinismo)
@@ -91,6 +115,10 @@ Antes dos exemplos praticos, siga esta ordem:
 ---
 
 ### 🧾 7. Registro (Cartório)
+
+**Problema:** Como armazenar múltiplos registros com dados estruturados e histórico completo?
+
+**Conceitos:**
 - `struct` (tipos customizados)
 - `arrays` (listas)
 - Persistência em blockchain
