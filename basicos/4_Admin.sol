@@ -37,7 +37,7 @@ contract Admin {
     
     /**
      * @dev Função que apenas o dono pode chamar
-     * Veja como usa o @modifier onlyOwner
+     * Veja como usa o modifier onlyOwner
      */
     function funcaoRestrita() public onlyOwner {
         // Apenas o dono chega aqui
@@ -45,11 +45,11 @@ contract Admin {
     
     /**
      * @dev O dono pode transferir a propriedade pra outro endereço
-     * @param novoDonoEndereço O endereço do novo dono
+     * @param novoDonoEndereco O endereco do novo dono
      */
-    function transferirPropriedade(address novoDonoEndereço) public onlyOwner {
-        require(novoDonoEndereço != address(0), "Endereco invalido");
-        dono = novoDonoEndereço;
+    function transferirPropriedade(address novoDonoEndereco) public onlyOwner {
+        require(novoDonoEndereco != address(0), "Endereco invalido");
+        dono = novoDonoEndereco;
     }
     
     /**

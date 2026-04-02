@@ -8,7 +8,7 @@ pragma solidity ^0.8.0;
  *
  * Como testar no Remix:
  * 1. Deploy com _precoMinimo (ex: 100000000000000000) e _duracao (ex: 600).
- * 2. Conta 2 envia lance via fazer Lance() com Value >= preco minimo.
+ * 2. Conta 2 envia lance via fazerLance() com Value >= preco minimo.
  * 3. Conta 3 envia lance maior e vire maior lancador.
  * 4. Conta 2 chama sacarLanceAnterior() para reembolso.
  * 5. Apos o tempo, chame encerrarLeilao() e confirme evento de encerramento.
@@ -22,13 +22,13 @@ contract Leilao {
     bool public encerrado;
     
     // 💰 Tracking de lances
-    address public maiorLançador;
+    address public maiorLancador;
     uint256 public maiorLance;
     
     // 🔄 Mapeamento de lances anteriores (para refund)
     mapping(address => uint256) public lances;
     
-    event NovoLance(address indexed lançador, uint256 valor);
+    event NovoLance(address indexed lancador, uint256 valor);
     event LeilaoEncerrado(address indexed vencedor, uint256 valorFinal);
     
     constructor(uint256 _precoMinimo, uint256 _duracao) {
@@ -42,7 +42,7 @@ contract Leilao {
      * @dev Faz um lance no leilão
      * Se enviar ETH, participa com esse valor
      */
-    function fazer Lance() public payable {
+    function fazerLance() public payable {
         require(!encerrado, "Leilao ja encerrou");
         require(block.timestamp < tempoFinal, "Leilao expirou");
         
@@ -57,7 +57,7 @@ contract Leilao {
         
         lances[msg.sender] = novoLance;
         maiorLance = novoLance;
-        maiorLançador = msg.sender;
+        maiorLancador = msg.sender;
         
         emit NovoLance(msg.sender, novoLance);
     }
@@ -68,12 +68,13 @@ contract Leilao {
      */
     function sacarLanceAnterior() public {
         require(lances[msg.sender] > 0, "Voce nao fez lances");
-        require(msg.sender != maiorLançador, "Vencedor nao pode sacar");
+        require(msg.sender != maiorLancador, "Vencedor nao pode sacar");
         
         uint256 valor = lances[msg.sender];
         lances[msg.sender] = 0;
-        
-        payable(msg.sender).transfer(valor);
+
+        (bool sucesso, ) = payable(msg.sender).call{value: valor}("");
+        require(sucesso, "Falha no saque");
     }
     
     /**
@@ -84,16 +85,18 @@ contract Leilao {
         require(!encerrado, "Ja foi encerrado");
         
         encerrado = true;
-        payable(vendedor).transfer(maiorLance);
+
+        (bool sucesso, ) = payable(vendedor).call{value: maiorLance}("");
+        require(sucesso, "Falha no repasse ao vendedor");
         
-        emit LeilaoEncerrado(maiorLançador, maiorLance);
+        emit LeilaoEncerrado(maiorLancador, maiorLance);
     }
     
     /**
      * @dev Vê qual é o maior lance atual
      */
     function verMaiorLance() public view returns (address, uint256) {
-        return (maiorLançador, maiorLance);
+        return (maiorLancador, maiorLance);
     }
     
     /**
