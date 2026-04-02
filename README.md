@@ -1,6 +1,12 @@
-# 🧪 Exemplos Práticos de Solidity
+# 🧪 Aprenda Solidity com Exemplos Práticos
 
-Bem-vindo! Este é um mini-curso progressivo com 7 contratos que cobrem os fundamentos essenciais de Solidity, do básico ao intermediário.
+Bem-vindo! Este é um mini-curso progressivo com 12 contratos organizados em 3 níveis de dificuldade que cobrem os fundamentos essenciais de Solidity até padrões reais de produção.
+
+## 🎯 Trilha Pedagógica em 3 Níveis
+
+**Nível 1: Básicos** (7 contratos) — conceitos essenciais  
+**Nível 2: Intermediários** (5 contratos) — bridge para concepções avançadas  
+**Nível 3: Tokens** (2 contratos) — padrões de produção (ERC20 e ERC721)
 
 ## 📚 Ordem Sugerida pra Aula
 
@@ -18,7 +24,7 @@ Bem-vindo! Este é um mini-curso progressivo com 7 contratos que cobrem os funda
 
 ## 📖 Guias Essenciais para Iniciantes
 
-Antes dos exemplos praticos, siga esta ordem:
+Antes dos contratos práticos, siga esta ordem de estudo:
 
 1. Fundamentos (tipos, `uint`, `mapping`, `require`, `msg.sender`): [docs/fundamentos-tipos-dados-solidity.md](docs/fundamentos-tipos-dados-solidity.md)
 2. Visibilidade (`public`, `private`, `internal`, `external`): [docs/visibilidade-solidity.md](docs/visibilidade-solidity.md)
@@ -145,7 +151,7 @@ Antes dos exemplos praticos, siga esta ordem:
 ```
 MentoriaBlockchain/
 ├── README.md
-├── exemplos/
+├── basicos/
 │   ├── 1_Contador.sol
 │   ├── 2_Votacao.sol
 │   ├── 3_Cofrinho.sol
