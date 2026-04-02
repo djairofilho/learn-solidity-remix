@@ -13,6 +13,13 @@ pragma solidity ^0.8.0;
  * Diferença principal do ERC-721:
  * - ERC-721: cada token tem um ID único e um dono
  * - ERC-20:  tokens não têm identidade, só quantidade
+ *
+ * Como testar no Remix:
+ * 1. Deploy passando _initialSupply (ex: 1000).
+ * 2. Chame balanceOf(conta1) e confira o supply inicial.
+ * 3. Chame transfer(conta2, valor) e valide saldo de conta2.
+ * 4. Conta2 chama approve(conta3, valor) e conta3 usa transferFrom(conta2, conta1, valor).
+ * 5. Teste mint(conta2, valor) e burn(valor) para validar totalSupply.
  */
 contract MeuPrimeiroToken {
 

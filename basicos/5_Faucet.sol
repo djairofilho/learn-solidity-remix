@@ -7,6 +7,13 @@ pragma solidity ^0.8.0;
  * Ensina: block.timestamp + rate limiting + lógica real
  * 
  * Um faucet é tipo um "torneira" — você pode sacar, mas tem que esperar
+ *
+ * Como testar no Remix:
+ * 1. Deploy no Remix VM.
+ * 2. Chame podeSacar() e confirme true no inicio.
+ * 3. Chame sacar() e verifique tempoRestante() maior que 0.
+ * 4. Tente sacar() de novo imediatamente e veja a transacao reverter.
+ * 5. Aguarde o tempo e chame sacar() novamente.
  */
 contract Faucet {
     

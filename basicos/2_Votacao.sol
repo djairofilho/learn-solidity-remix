@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title Votacao
  * @dev Sistema simples de votação com uma votação por pessoa
  * Ensina: mapping + require + lógica de negócio
+ *
+ * Como testar no Remix:
+ * 1. Deploy no Remix VM.
+ * 2. Chame votar("Alice") com a conta 1.
+ * 3. Chame obterVotos("Alice") e confirme valor 1.
+ * 4. Tente votar("Bob") novamente com a conta 1 e veja o require falhar.
+ * 5. Troque para a conta 2 e vote em "Bob" para validar votos independentes por endereco.
  */
 contract Votacao {
     

@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title Admin
  * @dev Padrão de ownership (usado em praticamente TODOS os contratos Web3)
  * Ensina: constructor + modifier + msg.sender + segurança
+ *
+ * Como testar no Remix:
+ * 1. Deploy com a conta 1 e confira dono().
+ * 2. Chame funcaoRestrita() com a conta 1 (deve funcionar).
+ * 3. Troque para conta 2 e tente funcaoRestrita() (deve reverter).
+ * 4. Volte para conta 1 e chame transferirPropriedade(conta2).
+ * 5. Com conta 2, chame funcaoRestrita() novamente (agora deve funcionar).
  */
 contract Admin {
     

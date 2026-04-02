@@ -8,6 +8,13 @@ pragma solidity ^0.8.0;
  * Diferença principal do ERC-20:
  * - ERC-20: todos os tokens são iguais (fungíveis)
  * - ERC-721: cada token tem um ID único e um dono (não fungível)
+ *
+ * Como testar no Remix:
+ * 1. Deploy no Remix VM.
+ * 2. Chame mint(conta1, "ipfs://token-1.json") e mint(conta2, "ipfs://token-2.json").
+ * 3. Consulte ownerOf(1), balanceOf(conta1) e tokenURI(1).
+ * 4. Conta1 chama approve(conta3, 1) e conta3 chama transferFrom(conta1, conta2, 1).
+ * 5. Teste setApprovalForAll(conta3, true) e valide com isApprovedForAll(conta1, conta3).
  */
 contract MeuPrimeiroNFT {
 
@@ -15,7 +22,7 @@ contract MeuPrimeiroNFT {
     // DADOS DO TOKEN
     // =========================================================
 
-    string public name   = "Aula Bruno NFT";
+    string public name   = "Mentoria NFT";
     string public symbol = "ABNFT";
 
     // Contador para gerar IDs únicos.

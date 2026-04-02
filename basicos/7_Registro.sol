@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title Registro
  * @dev Sistema de registro de documentos (cartório blockchain)
  * Ensina: struct + arrays + iteração + persistência
+ *
+ * Como testar no Remix:
+ * 1. Deploy no Remix VM.
+ * 2. Chame registrar("doc-1") e registrar("doc-2").
+ * 3. Confirme totalDocumentos() igual a 2.
+ * 4. Chame obterDocumento(0) e obterUltimoDocumento().
+ * 5. Chame obterTodosDocumentos() para inspecionar o historico completo.
  */
 contract Registro {
     

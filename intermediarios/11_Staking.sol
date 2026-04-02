@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title StakingBasico
  * @dev Recompensar usuários que "prenderem" fundos por tempo
  * Ensina: lock period, rewards calculation, claim mechanism, time-based logic
+ *
+ * Como testar no Remix:
+ * 1. Deploy no Remix VM e envie ETH para o contrato ter saldo de pagamento.
+ * 2. Chame fazerStaking() enviando Value (ex: 1 ether).
+ * 3. Aguarde alguns segundos e chame verRecompensaPending().
+ * 4. Chame cobrarRecompense() para simular recebimento de recompensa.
+ * 5. Chame retirarStaking(_valor) para retirar parte do stake.
  */
 contract StakingBasico {
     

@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title MultiSigSimples
  * @dev Múltiplas assinaturas: 2-de-3, 3-de-5, etc
  * Ensina: multiples approvers, voting pattern, execution
+ *
+ * Como testar no Remix:
+ * 1. Deploy com 3 signatarios e assinaturasNecessarias = 2.
+ * 2. Envie ETH para o contrato (botao receive ou transacao simples).
+ * 3. Um signatario chama submeterProposta(alvo, valor, dados).
+ * 4. Dois signatarios diferentes chamam aprovarProposta(id).
+ * 5. Chame executarProposta(id) e valide a execucao com evento.
  */
 contract MultiSigSimples {
     

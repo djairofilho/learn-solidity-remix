@@ -9,6 +9,13 @@ pragma solidity ^0.8.0;
  * ⚠️ IMPORTANTE: Isso NÃO é aleatoriedade verdadeira!
  * A blockchain é determinística, então qualquer um pode calcular o resultado
  * Use oráculos (VRF, Chainlink) para randomness real
+ *
+ * Como testar no Remix:
+ * 1. Deploy no Remix VM.
+ * 2. Chame jogar() e veja o retorno bool + evento Jogo.
+ * 3. Chame jogarComNumero(123) e compare resultados em chamadas diferentes.
+ * 4. Chame sortearAte(10) e confirme retorno entre 1 e 10.
+ * 5. Tente sortearAte(0) para validar o require.
  */
 contract CaraOuCoroa {
     

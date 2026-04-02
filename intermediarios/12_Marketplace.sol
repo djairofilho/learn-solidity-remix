@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title MarketplaceSimples
  * @dev Marketplace: vendedores listam itens, compradores compram com comissão
  * Ensina: inventory management, comissões, payable, endereço do vendedor
+ *
+ * Como testar no Remix:
+ * 1. Deploy com a conta 1 (dono da plataforma).
+ * 2. Conta 2 chama listarItem("Notebook", precoEmWei).
+ * 3. Conta 3 chama comprarItem(id) enviando exatamente o preco em Value.
+ * 4. Conta 2 chama sacarGanhos() para retirar valor de vendedor.
+ * 5. Conta 1 chama sacarComissao() para retirar a comissao da plataforma.
  */
 contract MarketplaceSimples {
     

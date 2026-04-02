@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title Leilao
  * @dev Sistema de leilão: maior lance vence
  * Ensina: tracking de bids, comparação de valores, refund logic
+ *
+ * Como testar no Remix:
+ * 1. Deploy com _precoMinimo (ex: 100000000000000000) e _duracao (ex: 600).
+ * 2. Conta 2 envia lance via fazer Lance() com Value >= preco minimo.
+ * 3. Conta 3 envia lance maior e vire maior lancador.
+ * 4. Conta 2 chama sacarLanceAnterior() para reembolso.
+ * 5. Apos o tempo, chame encerrarLeilao() e confirme evento de encerramento.
  */
 contract Leilao {
     

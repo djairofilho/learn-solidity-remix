@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title Whitelist
  * @dev Controle de acesso: apenas endereços pré-aprovados podem fazer algo
  * Ensina: array de endereços, permissões, access control pattern
+ *
+ * Como testar no Remix:
+ * 1. Deploy com a conta 1 (dono).
+ * 2. Chame adicionarAprovado(conta2).
+ * 3. Troque para conta 2 e chame funcaoRestrita() (deve funcionar).
+ * 4. Volte para conta 1 e chame removerAprovado(conta2).
+ * 5. Na conta 2, teste funcaoRestrita() novamente (deve reverter).
  */
 contract Whitelist {
     

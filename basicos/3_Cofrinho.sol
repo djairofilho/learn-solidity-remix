@@ -5,6 +5,13 @@ pragma solidity ^0.8.0;
  * @title Cofrinho
  * @dev Contrato para depositar e retirar ETH de forma segura
  * Ensina: payable + msg.value + require + segurança
+ *
+ * Como testar no Remix:
+ * 1. Deploy no Remix VM.
+ * 2. Em Value, selecione 1 ether e chame depositar().
+ * 3. Chame meuSaldo() e confirme 1000000000000000000.
+ * 4. Chame sacar(200000000000000000) para retirar 0.2 ether.
+ * 5. Chame sacarTudo() e confirme meuSaldo() igual a 0.
  */
 contract Cofrinho {
     
