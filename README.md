@@ -153,10 +153,97 @@ MentoriaBlockchain/
 │   ├── 5_Faucet.sol
 │   ├── 6_CaraOuCoroa.sol
 │   └── 7_Registro.sol
+├── intermediarios/
+│   ├── 8_Whitelist.sol
+│   ├── 9_Leilao.sol
+│   ├── 10_MultiSig.sol
+│   ├── 11_Staking.sol
+│   └── 12_Marketplace.sol
 └── tokens/
     ├── ERC20.sol
     └── ERC721.sol
 ```
+
+---
+
+## 🌉 Contratos Bridge (Intermediário)
+
+Após dominar os 7 básicos, explore esses contratos que conectam conceitos preparando para tokens e DeFi.
+
+| # | Contrato | Conceitos | Dificuldade |
+|---|----------|-----------|-------------|
+| 8️⃣ | **Whitelist** | Array • Mapping • Access Control | ⭐⭐ Intermediário |
+| 9️⃣ | **Leilão** | Tracking bids • Refund logic | ⭐⭐ Intermediário |
+| 🔟 | **MultiSig** | Voting • Proposals • Execution | ⭐⭐⭐ Avançado |
+| 1️⃣1️⃣ | **Staking** | Lock period • Rewards • Claim | ⭐⭐⭐ Avançado |
+| 1️⃣2️⃣ | **Marketplace** | Inventory • Comissões • Vendas | ⭐⭐⭐ Avançado |
+
+### 🏳️ 8. Whitelist (Controle de Acesso)
+
+**Problema:** Como fazer uma pré-venda restrita apenas para endereços aprovados?
+
+**Conceitos:**
+- Array de endereços
+- Mapping para verificação rápida
+- Access control pattern
+
+**Use case:** Presale, whitelist em lançamento
+
+---
+
+### 🏛️ 9. Leilão (Bidding System)
+
+**Problema:** Como implementar um leilão onde o maior lance vence?
+
+**Conceitos:**
+- Tracking de bids
+- Comparação de valores
+- Refund logic
+- Time-based logic
+
+**Use case:** NFT auctions, presales
+
+---
+
+### 🗝️ 10. MultiSig Simples (Múltiplas Assinaturas)
+
+**Problema:** Como exigir aprovação de múltiplos signatários antes de executar uma ação?
+
+**Conceitos:**
+- Voting pattern
+- Proposals
+- Threshold logic
+- Execution control
+
+**Use case:** Tesouro coletivo, DAOs, contratos seguros de produção
+
+---
+
+### 💎 11. Staking (Lock & Reward)
+
+**Problema:** Como incentivar usuários que delegam seus fundos com recompensas?
+
+**Conceitos:**
+- Lock period
+- Time-based rewards
+- Claim mechanism
+- APY/rate calculations
+
+**Use case:** Yield farming, staking pools, incentivos
+
+---
+
+### 🛍️ 12. Marketplace (Buy/Sell)
+
+**Problema:** Como criar um marketplace P2P com múltiplos vendedores e comissão da plataforma?
+
+**Conceitos:**
+- Inventory management
+- Comissões
+- Vendedor tracking
+- Withdraw pattern
+
+**Use case:** NFT marketplace, peer-to-peer trading, e-commerce Web3
 
 ---
 

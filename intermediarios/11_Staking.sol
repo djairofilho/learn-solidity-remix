@@ -1,0 +1,122 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+/**
+ * @title StakingBasico
+ * @dev Recompensar usuários que "prenderem" fundos por tempo
+ * Ensina: lock period, rewards calculation, claim mechanism, time-based logic
+ */
+contract StakingBasico {
+    
+    // 📊 Informações de recompensa
+    uint256 public recompensaPorSegundo = 1e16; // 0.01 token por segundo
+    
+    // 📌 Registro de stakeholders
+    struct Staker {
+        uint256 amountStaked;
+        uint256 timestampLastClaim;
+    }
+    
+    mapping(address => Staker) public stakers;
+    uint256 public totalStaked;
+    
+    event DepositoStaking(address indexed usuario, uint256 valor);
+    event RetiraStaking(address indexed usuario, uint256 valor);
+    event RecompensaCobrada(address indexed usuario, uint256 recompensa);
+    
+    /**
+     * @dev Faz depósito pra começar staking
+     * Apenas recebendo ETH, começa a acumular recompensas
+     */
+    function fazerStaking() public payable {
+        require(msg.value > 0, "Envie ETH");
+        
+        // Se já estava fazendo staking, calcula recompensa antes
+        if (stakers[msg.sender].amountStaked > 0) {
+            _calcularRecompensa(msg.sender);
+        }
+        
+        stakers[msg.sender].amountStaked += msg.value;
+        stakers[msg.sender].timestampLastClaim = block.timestamp;
+        totalStaked += msg.value;
+        
+        emit DepositoStaking(msg.sender, msg.value);
+    }
+    
+    /**
+     * @dev Calcula recompensa acumulada desde o último claim
+     */
+    function _calcularRecompensa(address _usuario) internal {
+        if (stakers[_usuario].amountStaked == 0) return;
+        
+        uint256 tempoDecorrido = block.timestamp - stakers[_usuario].timestampLastClaim;
+        uint256 recompense = (stakers[_usuario].amountStaked / 1 ether) * recompensaPorSegundo * tempoDecorrido;
+        
+        // Aqui em um contrato real, transferiamos tokens como recompensa
+        // Por enquanto, apenas atualiza o timestamp
+        stakers[_usuario].timestampLastClaim = block.timestamp;
+    }
+    
+    /**
+     * @dev Vê quanto de recompensa você ganhou desde última vez
+     */
+    function verRecompensaPending() public view returns (uint256) {
+        if (stakers[msg.sender].amountStaked == 0) return 0;
+        
+        uint256 tempoDecorrido = block.timestamp - stakers[msg.sender].timestampLastClaim;
+        return (stakers[msg.sender].amountStaked / 1 ether) * recompensaPorSegundo * tempoDecorrido;
+    }
+    
+    /**
+     * @dev Cobra a recompensa acumulada
+     */
+    function cobrarRecompense() public {
+        uint256 recompensa = verRecompensaPending();
+        require(recompensa > 0, "Sem recompensa");
+        
+        stakers[msg.sender].timestampLastClaim = block.timestamp;
+        
+        // Aqui transferiamos tokens: token.transfer(msg.sender, recompensa);
+        // Por enquanto, apenas envia ETH como simulação
+        payable(msg.sender).transfer(recompensa / 1e18); // Conversão simplificada
+        
+        emit RecompensaCobrada(msg.sender, recompensa);
+    }
+    
+    /**
+     * @dev Retira o staking (sem lock period neste exemplo)
+     */
+    function retirarStaking(uint256 _valor) public {
+        require(_valor > 0, "Valor invalido");
+        require(stakers[msg.sender].amountStaked >= _valor, "Saldo insuficiente");
+        
+        // Calcula recompensa antes de retirar
+        _calcularRecompensa(msg.sender);
+        
+        stakers[msg.sender].amountStaked -= _valor;
+        totalStaked -= _valor;
+        
+        payable(msg.sender).transfer(_valor);
+        
+        emit RetiraStaking(msg.sender, _valor);
+    }
+    
+    /**
+     * @dev Vê quanto você tem em staking
+     */
+    function meuStaking() public view returns (uint256) {
+        return stakers[msg.sender].amountStaked;
+    }
+    
+    /**
+     * @dev Total em staking na pool
+     */
+    function verTotalStaked() public view returns (uint256) {
+        return totalStaked;
+    }
+    
+    // Para receber ETH
+    receive() external payable {
+        fazerStaking();
+    }
+}
