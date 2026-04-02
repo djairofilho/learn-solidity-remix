@@ -30,6 +30,8 @@ Antes dos contratos práticos, siga esta ordem de estudo:
 2. Visibilidade (`public`, `private`, `internal`, `external`): [docs/visibilidade-solidity.md](docs/visibilidade-solidity.md)
 3. Funcoes, eventos e modifiers: [docs/funcoes-eventos-modifiers-solidity.md](docs/funcoes-eventos-modifiers-solidity.md)
 4. Nomenclatura no Solidity: [docs/nomenclatura-solidity-underscore.md](docs/nomenclatura-solidity-underscore.md)
+5. Guia pratico do Remix: [docs/remix-guia-pratico.md](docs/remix-guia-pratico.md)
+6. FAQ de duvidas e erros comuns: [docs/faq-erros-comuns-solidity.md](docs/faq-erros-comuns-solidity.md)
 
 ---
 
@@ -166,8 +168,8 @@ MentoriaBlockchain/
 │   ├── 11_Staking.sol
 │   └── 12_Marketplace.sol
 └── tokens/
-    ├── ERC20.sol
-    └── ERC721.sol
+    ├── MyERC20.sol
+    └── MyERC721.sol
 ```
 
 ---
@@ -293,26 +295,15 @@ Copie o código de qualquer arquivo `.sol` e:
 4. Compile (`Ctrl+S`)
 5. Deploy e interaja!
 
----
+Para um passo a passo completo de ambiente, contas, envio de ETH e leitura de logs:
 
-## 💡 Dicas Pedagógicas
+- [docs/remix-guia-pratico.md](docs/remix-guia-pratico.md)
 
-- **Comece com Contador** — instale os conceitos básicos
-- **Pule para Votação** — deixa engajado com lógica real
-- **Antes do Cofrinho** — explique msg.value e payable
-- **Admin é obrigatório** — modifier é ESSENCIAL em Web3
-- **Faucet + seu ERC20** — primeiro contrato "conectado"
-- **Cara ou Coroa é quebra-galho** — todos vão querer testar uma vez
-- **Registro fecha brilhantemente** — aplicação real de tudo
+## ❓ Dúvidas Frequentes
 
----
+Se os alunos travarem em erros de compilação/revert, consulte:
 
-## 📘 Documentação Extra
-
-- Fundamentos para primeira aula (`uint`, `mapping`, `require`, `msg.sender`): [docs/fundamentos-tipos-dados-solidity.md](docs/fundamentos-tipos-dados-solidity.md)
-- Visibilidade (`public`, `private`, `internal`, `external`): [docs/visibilidade-solidity.md](docs/visibilidade-solidity.md)
-- Nomenclatura com `_` em Solidity: [docs/nomenclatura-solidity-underscore.md](docs/nomenclatura-solidity-underscore.md)
-- Funcoes, eventos e modifiers: [docs/funcoes-eventos-modifiers-solidity.md](docs/funcoes-eventos-modifiers-solidity.md)
+- [docs/faq-erros-comuns-solidity.md](docs/faq-erros-comuns-solidity.md)
 
 ---
 

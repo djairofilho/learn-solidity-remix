@@ -101,6 +101,21 @@ Dica: em parametros dinamicos (`string`, `bytes`, arrays), `external + calldata`
 - Use `internal` para logica que deve ser reaproveitada por contratos filhos.
 - Use `external` para funcoes focadas em chamadas de fora e melhor eficiencia com `calldata`.
 
+## Duvidas frequentes
+
+### "private deixa meus dados secretos?"
+
+Nao. `private` restringe acesso no codigo Solidity, mas dados on-chain podem ser lidos por ferramentas de exploracao de estado.
+
+### "Posso chamar external de dentro do contrato?"
+
+Diretamente (`minhaFuncao()`) nao. Para isso, teria que usar `this.minhaFuncao()`, que vira chamada externa e custa mais gas.
+
+### "Quando escolher public vs external?"
+
+- prefira `public` quando tambem precisa chamar internamente
+- prefira `external` para funcoes usadas de fora, especialmente com parametros dinamicos
+
 ## Exemplo completo
 
 ```solidity

@@ -146,7 +146,30 @@ contract CofrinhoComOwner {
 - marcar funcao como `view` quando ela altera estado
 - nao emitir eventos em funcoes sensiveis
 
-## 6) Regra rapida para aula
+## 6) Duvidas que sempre aparecem em aula
+
+### "Por que essa funcao custa gas e a outra nao?"
+
+- funcoes `view`/`pure` chamadas externamente para leitura nao geram transacao
+- funcoes que alteram estado sempre geram transacao e pagam gas
+
+### "Event guarda estado?"
+
+Nao. Evento e log para consulta/indexacao, nao substitui variavel de estado.
+
+### "Modifier e seguranca automatica?"
+
+Modifier ajuda a centralizar regra, mas a regra ainda precisa ser correta e cobrir todos os caminhos da funcao.
+
+## 7) Boas praticas rapidas
+
+- valide parametros no inicio da funcao
+- atualize estado antes de interacoes externas
+- emita evento apos acao relevante
+- prefira mensagens de erro curtas e objetivas
+- para envio de ETH, prefira `call` com verificacao de sucesso
+
+## 8) Regra rapida para aula
 
 - funcao: o que o contrato faz
 - evento: o que o contrato anuncia

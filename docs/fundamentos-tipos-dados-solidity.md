@@ -115,6 +115,20 @@ function quemChamou() public view returns (address) {
 }
 ```
 
+## 7.1) Unidades de valor (wei, gwei, ether)
+
+Em Solidity, valores monetarios sao inteiros em wei.
+
+- `1 ether = 10^18 wei`
+- `1 gwei = 10^9 wei`
+
+Exemplo:
+
+```solidity
+uint256 public umEther = 1 ether; // 1000000000000000000
+uint256 public taxaGas = 20 gwei; // 20000000000
+```
+
 ## 8) Validacoes com require
 
 Use `require` para regras de seguranca.
@@ -147,12 +161,42 @@ function depositar() public payable {
 - esquecer `emit` ao disparar evento
 - usar `view` em funcao que altera estado
 - nao validar entrada com `require`
+- usar nome de funcao com espaco
+- usar variavel com caractere invalido
+
+## 11) `memory`, `storage` e `calldata` sem misterio
+
+- `storage`: persistente no contrato
+- `memory`: temporario durante chamada
+- `calldata`: entrada somente leitura em funcao `external`
+
+Exemplo rapido:
+
+```solidity
+string public nome;
+
+function setNome(string memory novoNome) public {
+    nome = novoNome; // grava em storage
+}
+
+function comparar(string calldata valor) external pure returns (bool) {
+    return bytes(valor).length > 0;
+}
+```
+
+## 12) Checklist de validacao em aula
+
+- O contrato compila sem erro
+- Cada funcao tem um teste de sucesso
+- Pelo menos um teste de falha com `require`
+- Eventos principais foram observados no log
+- Teste com duas contas para ensinar `msg.sender`
 
 ## Ordem sugerida de estudo
 
 1. Este guia (fundamentos)
 2. Visibilidade (`public`, `private`, `internal`, `external`)
 3. Funcoes, eventos e modifiers
-4. Contratos praticos da pasta `exemplos/`
+4. Contratos praticos da pasta `basicos/`
 
 Com essa base, `uint`, `mapping` e os demais conceitos ficam muito mais faceis de ensinar na primeira aula.
