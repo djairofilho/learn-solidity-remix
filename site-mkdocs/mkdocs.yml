@@ -1,0 +1,72 @@
+site_name: Mentoria Blockchain
+repo_url: https://github.com/anabeatrizzz/MentoriaBlockchain
+theme:
+  name: material
+  language: pt
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-7
+        name: Modo Escuro
+    - scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/brightness-4
+        name: Modo Claro
+plugins:
+  - search
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: solidity
+          class: solidity
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - admonition
+  - tables
+  - attr_list
+  - md_in_html
+
+nav:
+  - Início: index.md
+  - Fundamentos:
+    - fundamentos/index.md
+    - fundamentos/tipos-dados.md
+    - fundamentos/funcoes-eventos-modifiers.md
+    - fundamentos/visibilidade.md
+    - fundamentos/nomenclatura.md
+    - fundamentos/faq.md
+    - fundamentos/remix.md
+  - Contratos Básicos:
+    - basicos/index.md
+    - basicos/contador.md
+    - basicos/votacao.md
+    - basicos/cofrinho.md
+    - basicos/admin.md
+    - basicos/faucet.md
+    - basicos/cara-ou-coroa.md
+    - basicos/registro.md
+  - Contratos Intermediários:
+    - intermediarios/index.md
+    - intermediarios/whitelist.md
+    - intermediarios/leilao.md
+    - intermediarios/multisig.md
+    - intermediarios/staking.md
+    - intermediarios/marketplace.md
+  - Tokens:
+    - tokens/index.md
+    - tokens/erc20.md
+    - tokens/erc721.md
